@@ -1,10 +1,10 @@
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import ShopNavigator from "./src/navigation/ShopNavigator";
 import Header from "./src/components/Header";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Footer from "./src/components/Footer";
 
 export default function App() {
   const [isPortrait, setIsPortrait] = useState(true);
@@ -33,16 +33,11 @@ export default function App() {
   if (!loaded) return null;
 
   return (
-    <ShopNavigator />
-    // <View style={styles.container}>
-    //   {
-    //     isPortrait ?
-    //       <Text style={styles.texto}>Vertical</Text>
-    //       :
-    //       <Text style={styles.texto2}>Horizontal</Text>
-    //   }
-    //   <StatusBar style="auto" />
-    // </View>
+    <View style={styles.container}>
+      <Header />
+      <ShopNavigator />
+      <Footer />
+    </View>
   );
 }
 
@@ -50,8 +45,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "stretch",
+    justifyContent: "flex-start",
   },
   texto: {
     fontFamily: "OpenSansBold",
