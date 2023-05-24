@@ -2,9 +2,10 @@ import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
-import ShopNavigator from "./src/navigation/ShopNavigator";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
+import { NavigationContainer } from "@react-navigation/native";
+import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
 
 export default function App() {
   const [isPortrait, setIsPortrait] = useState(true);
@@ -35,7 +36,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <ShopNavigator />
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
       <Footer />
     </View>
   );

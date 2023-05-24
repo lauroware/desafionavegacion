@@ -1,18 +1,59 @@
+import CartNavigator from "./CartNavigator";
+import ShopNavigator from "./ShopNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Tab = createBottomTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+export default BottomTabNavigator = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Inicio" component={InicioScreen} />
-        <Tab.Screen name="Explorar" component={ExplorarScreen} />
-        <Tab.Screen name="Perfil" component={PerfilScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <BottomTabs.Navigator
+      screenOptions={{
+        headerShow: false,
+        tabBarShowLabel: false,
+        tabBarStyle: styles.tabBar,
+      }}
+    >
+      <BottomTabs.Screen
+        name="ShopNavigator"
+        component={ShopNavigator}
+        options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="home" size={20} color="white" />
+            </View>
+          ),
+        }}
+      />
+      <BottomTabs.Screen
+        name="Cart"
+        component={CartNavigator}
+        options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="cart" size={20} color="white" />
+            </View>
+          ),
+        }}
+      />
+    </BottomTabs.Navigator>
   );
 };
 
-export default BottomTabNavigator;
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: "#333",
+    paddingTop: 5,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    heigth: 85,
+    position: "absolute",
+    shadowColor: "#333",
+    shadowOffset: { width: 0, heigth: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 4,
+    bottom: -10,
+  },
+});
