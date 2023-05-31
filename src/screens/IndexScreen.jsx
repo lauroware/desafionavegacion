@@ -18,8 +18,8 @@ const IndexScreen = ({ navigation }) => {
     Linking.openURL("https://api.whatsapp.com/send?phone=00541162366175");
   };
 
-  const navigateToProductos = () => {
-    navigation.navigate("Productos");
+  const navigateToProducts = () => {
+    navigation.navigate("Categories");
   };
 
   const navigateToTeam = () => {
@@ -38,7 +38,7 @@ const IndexScreen = ({ navigation }) => {
       <View style={styles.topImagesContainer}>
         <TouchableOpacity
           style={styles.imageContainer}
-          onPress={navigateToProductos}
+          onPress={navigateToProducts}
         >
           <Image
             style={styles.image}

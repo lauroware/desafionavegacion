@@ -1,7 +1,8 @@
 import CartNavigator from "./CartNavigator";
 import ShopNavigator from "./ShopNavigator";
+import OrdersNavigator from "./OrdersNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const BottomTabs = createBottomTabNavigator();
@@ -10,7 +11,7 @@ export default BottomTabNavigator = () => {
   return (
     <BottomTabs.Navigator
       screenOptions={{
-        headerShow: false,
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBar,
       }}
@@ -33,6 +34,17 @@ export default BottomTabNavigator = () => {
           tabBarIcon: () => (
             <View>
               <Ionicons name="cart" size={20} color="white" />
+            </View>
+          ),
+        }}
+      />
+      <BottomTabs.Screen
+        name="OrdersTab"
+        component={OrdersNavigator}
+        options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="list" size={20} color="white" />
             </View>
           ),
         }}
