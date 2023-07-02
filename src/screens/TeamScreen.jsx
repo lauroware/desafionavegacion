@@ -17,40 +17,57 @@ const TeamScreen = ({ navigation }) => {
     <ScrollView contentContainerStyle={styles.container}>
       <TouchableOpacity onPress={handlePress}>
         <Text style={styles.title}>
-          ¡Quieres ganarte todo esto, al igual que yo! Sin tener que invertir ni
-          un solo peso, tienes la increíble oportunidad de unirte a mi equipo y
-          convertirte en tu propio jefe. Tendrás la libertad de trabajar a tu
-          propio ritmo y la posibilidad de alcanzar tus metas más ambiciosas.
-          Pero eso no es todo, porque el potencial de ganancias es ilimitado.
-          ¿Te imaginas poder lograr todo esto y mucho más?
+          ¡Unite a la revolución culinaria con Essen y convertite en nuestro
+          próximo revendedor estrella!
         </Text>
+
         <Text style={styles.text}>
-          No esperes más, esta es tu oportunidad de tomar el control de tu vida
-          y alcanzar el éxito que siempre has deseado. Permíteme guiarte en este
-          emocionante camino y compartir contigo todos los conocimientos y
-          herramientas que necesitas para triunfar. Estaré a tu disposición para
-          responder todas tus preguntas y ayudarte en cada paso del camino.
+          ¿Sos un apasionado de la cocina y te encanta compartir tu entusiasmo
+          con los demás? ¿Te gustaría tener tu propio negocio y ser parte de una
+          marca reconocida a nivel internacional? ¡Entonces esta es tu
+          oportunidad!
         </Text>
+
         <Text style={styles.text}>
-          Imagina tener la flexibilidad de administrar tu tiempo como desees,
-          sin horarios fijos ni jefes que te digan qué hacer. Tendrás la
-          libertad de trabajar desde cualquier lugar, ya sea desde la comodidad
-          de tu hogar o mientras disfrutas de unas vacaciones. La decisión es
-          tuya.
+          En Essen, buscamos personas como tú, emprendedores con visión y pasión
+          por la cocina, para formar parte de nuestro equipo de revendedores.
+          ¿Qué te ofrecemos? Una increíble gama de productos culinarios de alta
+          calidad que harán que tus clientes se enamoren de la cocina como nunca
+          antes.
         </Text>
+
         <Text style={styles.text}>
-          No importa tu experiencia previa o tu formación académica, lo único
-          que necesitas es tu determinación y la voluntad de aprender. Te
-          proporcionaré todas las herramientas y recursos necesarios para que te
-          conviertas en un experto en tu campo y alcances tus objetivos. Juntos,
-          construiremos un equipo sólido y exitoso.
+          Imagina tener acceso a una exclusiva selección de utensilios de cocina
+          que combinan tecnología de vanguardia, diseño innovador y durabilidad
+          excepcional. Desde nuestras sartenes antiadherentes que hacen que
+          cocinar sea un verdadero placer, hasta nuestros cuchillos de precisión
+          que facilitan el corte y el picado, cada producto Essen está diseñado
+          para superar las expectativas.
         </Text>
+
         <Text style={styles.text}>
-          No dejes que esta oportunidad pase de largo. Contáctame ahora mismo
-          para que podamos comenzar este emocionante viaje juntos. No hay
-          límites para lo que podemos lograr. ¡El éxito está a tu alcance!
+          Pero eso no es todo. Al convertirte en revendedor Essen, vas a recibir
+          capacitación y apoyo continuo para ayudarte a alcanzar el éxito. Te
+          proporcionaremos todas las herramientas y recursos necesarios para que
+          puedas ofrecer a tus clientes una experiencia excepcional y construir
+          tu propio negocio próspero.
         </Text>
-        {/* Otras partes de la pantalla aquí */}
+
+        <Text style={styles.text}>
+          No pierdas la oportunidad de formar parte de una marca líder en la
+          industria culinaria y de llevar la magia de Essen a tu comunidad.
+          ¡Contáctanos ahora y descubre cómo puedes comenzar tu camino hacia el
+          éxito como revendedor Essen!
+        </Text>
+
+        <Text style={styles.text}>
+          ¡El futuro culinario está en tus manos! Comunícate con nosotros hoy
+          mismo y sé parte de la revolución Essen.
+        </Text>
+
+        <Text style={styles.text}>Contactame, soy Martín, Tu Chico Essen</Text>
+
+        <Text style={styles.text}></Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -74,6 +91,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
     textAlign: "center",
+  },
+  contact: {
+    fontSize: 18,
+    marginTop: 20,
+    textAlign: "center",
+    fontStyle: "italic",
   },
 });
 

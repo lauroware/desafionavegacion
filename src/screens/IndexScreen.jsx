@@ -8,6 +8,7 @@ import {
   Linking,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const IndexScreen = ({ navigation }) => {
   const navigateToBread = () => {
@@ -24,6 +25,10 @@ const IndexScreen = ({ navigation }) => {
 
   const navigateToTeam = () => {
     navigation.navigate("Team");
+  };
+
+  const navigateToTips = () => {
+    navigation.navigate("Tips");
   };
 
   return (
@@ -57,13 +62,13 @@ const IndexScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.bottomImagesContainer}>
-        <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={require("../assets/comunidad.bmp")}
-          />
-          <Text style={styles.imageText}>Comunidad</Text>
-        </View>
+        <TouchableOpacity
+          style={styles.imageContainer}
+          onPress={navigateToTips}
+        >
+          <Image style={styles.image} source={require("../assets/tips.jpg")} />
+          <Text style={styles.imageText}>Tips de cocina</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.imageContainer}
@@ -71,7 +76,7 @@ const IndexScreen = ({ navigation }) => {
         >
           <Image
             style={styles.image}
-            source={require("../assets/equipo.bmp")}
+            source={require("../assets/emprendeconmigo.jpeg")}
           />
           <Text style={styles.imageText}>Unite a mi equipo</Text>
         </TouchableOpacity>

@@ -9,6 +9,7 @@ import HuevoFritoScreen from "../screens/HuevoFritoScreen";
 import TeamScreen from "../screens/TeamScreen";
 import CategoriesScreen from "../screens/CategoriesScreen";
 import DetailsScreen from "../screens/DetailsScreen";
+import TipsScreen from "../screens/TipsScreen";
 
 const ShopNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -25,6 +26,7 @@ const ShopNavigator = () => {
       <Stack.Screen name="Recetas" component={RecetasScreen} />
       <Stack.Screen name="Inicio" component={IndexScreen} />
       <Stack.Screen name="Huevo Frito" component={HuevoFritoScreen} />
+      <Stack.Screen name="Tips" component={TipsScreen} />
       <Stack.Screen name="Team" component={TeamScreen} />
       <Stack.Screen
         name="Categories"
