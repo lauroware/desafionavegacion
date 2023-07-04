@@ -67,7 +67,7 @@ const IndexScreen = ({ navigation }) => {
           onPress={navigateToTips}
         >
           <Image style={styles.image} source={require("../assets/tips.jpg")} />
-          <Text style={styles.imageText}>Tips de cocina</Text>
+          <Text style={styles.imageText}>Lista de supermercado</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -78,7 +78,7 @@ const IndexScreen = ({ navigation }) => {
             style={styles.image}
             source={require("../assets/emprendeconmigo.jpeg")}
           />
-          <Text style={styles.imageText}>Unite a mi equipo</Text>
+          <Text style={styles.imageText}>Mandame tu comida</Text>
         </TouchableOpacity>
       </View>
 

@@ -38,27 +38,27 @@ const RecetasScreen = ({ navigation }) => {
     },
     {
       id: "5",
-      title: "Torta",
-      image: require("../assets/bizcuchuelo.jpg"),
-      type: "Dulce",
-    },
-    {
-      id: "6",
-      title: "Gelatina",
-      image: require("../assets/gelatina.jpg"),
-      type: "Dulce",
-    },
-    {
-      id: "7",
-      title: "Huevo Frito",
-      image: require("../assets/huevo-frito.jpg"),
+      title: "Chipa",
+      image: require("../assets/chipa.jpg"),
       type: "Salado",
     },
     {
+      id: "6",
+      title: "Panchos",
+      image: require("../assets/pancho.jpg"),
+      type: "Salado",
+    },
+    {
+      id: "7",
+      title: "Chocotorta",
+      image: require("../assets/chocotorta.jpg"),
+      type: "Dulce",
+    },
+    {
       id: "8",
-      title: "Torta Frita",
-      image: require("../assets/torta-frita.jpg"),
-      type: "Frito",
+      title: "Arroz",
+      image: require("../assets/arroz.jpg"),
+      type: "Salado",
     },
   ];
 

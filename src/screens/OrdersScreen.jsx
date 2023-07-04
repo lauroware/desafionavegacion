@@ -1,10 +1,19 @@
-import { FlatList, StyleSheet, View, Text } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { ORDERS } from "../data/orders";
-import OrderItem from "../components/OrderItem/Index";
-import React from "react";
+import OrderItem from "../components/OrderItem/Index.jsx";
+import { getOrders } from "../store/actions/orders.action";
 
 const OrdersScreen = () => {
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders.list);
+
+  useEffect(() => {
+    console.log("first");
+    dispatch(getOrders());
+  }, []);
+
   const handeleDeleteOrder = () => {
     console.log("Eliminar orden");
   };
@@ -15,7 +24,7 @@ const OrdersScreen = () => {
   return (
     <View>
       <FlatList
-        data={ORDERS}
+        data={orders}
         keyExtractor={(item) => item.id}
         renderItem={renderOrderItem}
       />

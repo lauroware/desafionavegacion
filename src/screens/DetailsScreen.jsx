@@ -1,14 +1,15 @@
+import { Button, StyleSheet, Text, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
-import { useSelector } from "react-redux";
+import { add_item } from "../store/actions/cart.action";
 
 const DetailsScreen = () => {
+  const dispatch = useDispatch();
   const bread = useSelector((state) => state.products.selected);
 
-  const addToCart = () => {
-    // Lógica para agregar el producto al carrito
-    // Puedes implementar tu propia lógica aquí
-    console.log("Producto agregado al carrito:", bread);
+  const handleAddItem = () => {
+    dispatch(add_item(bread));
   };
 
   return (
@@ -16,7 +17,7 @@ const DetailsScreen = () => {
       <Text style={styles.name}>{bread.name}</Text>
       <Text style={styles.description}>{bread.description}</Text>
       <Text style={styles.price}>${bread.price}</Text>
-      <Button title="Agregar al carrito" onPress={addToCart} />
+      <Button title="Agregar al carrito" onPress={handleAddItem} />
     </View>
   );
 };

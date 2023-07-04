@@ -9,10 +9,21 @@ import {
 import { CART } from "../data/cart";
 import CartItem from "../components/CartItem/Index";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { remove_item, confirm_cart } from "../store/actions/cart.action";
 
 const CartScreen = () => {
+  const dispatch = useDispatch();
+  const item = useSelector((state) => state.cart.items);
+  const total = useSelector((state) => state.cart.total);
+
   const handleDeleteItem = (id) => {
     console.log(id);
+    dispatch(remove_item(id));
+  };
+
+  const handleConfirmCart = () => {
+    dispatch(confirm_cart(item, total));
   };
 
   const renderCartItem = ({ item }) => (
@@ -23,7 +34,7 @@ const CartScreen = () => {
     <View style={styles.container}>
       <View style={styles.list}>
         <FlatList
-          data={CART}
+          data={item}
           keyExtractor={(item) => item.id}
           renderItem={renderCartItem}
         />
@@ -35,7 +46,7 @@ const CartScreen = () => {
         >
           <Text>Confirmar</Text>
           <View>
-            <Text style={styles.priceText}>Total: $220000</Text>
+            <Text style={styles.priceText}>Total: {total} </Text>
           </View>
         </TouchableOpacity>
       </View>

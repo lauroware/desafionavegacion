@@ -1,103 +1,114 @@
-import React from "react";
+import { Camera } from "expo-camera";
+import { useRef, useState } from "react";
 import {
-  View,
+  Button,
+  ImageBackground,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  ScrollView,
+  View,
 } from "react-native";
+import * as MediaLibrary from "expo-media-library";
 
-const TeamScreen = ({ navigation }) => {
-  const handlePress = () => {
-    // Navegar a otra pantalla
-    navigation.navigate("Team");
+export default function App() {
+  const [status, requestPermission] = Camera.useCameraPermissions();
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  const [lastPhotoURI, setLastPhotoURI] = useState(null);
+  const cameraRef = useRef(null);
+
+  const savePhotoToGallery = async (photoURI) => {
+    await MediaLibrary.saveToLibraryAsync(photoURI);
   };
 
+  const handleTakePhoto = async () => {
+    if (cameraRef.current) {
+      let photo = await cameraRef.current.takePictureAsync();
+      setLastPhotoURI(photo.uri);
+      savePhotoToGallery(photo.uri);
+    }
+  };
+
+  if (!status?.granted) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ textAlign: "center" }}>
+          We need access to your camera
+        </Text>
+        <Button onPress={requestPermission} title="Grant permission" />
+      </View>
+    );
+  }
+
+  if (lastPhotoURI !== null) {
+    return (
+      <ImageBackground
+        source={{ uri: lastPhotoURI }}
+        style={{
+          flex: 1,
+          backgroundColor: "transparent",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            alignSelf: "flex-start",
+            position: "absolute",
+            top: 20,
+            left: 20,
+            backgroundColor: "#666",
+            padding: 10,
+          }}
+          onPress={() => {
+            setLastPhotoURI(null);
+          }}
+        >
+          <Text style={{ fontSize: 20, color: "white" }}>❌</Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    );
+  }
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity onPress={handlePress}>
-        <Text style={styles.title}>
-          ¡Unite a la revolución culinaria con Essen y convertite en nuestro
-          próximo revendedor estrella!
-        </Text>
-
-        <Text style={styles.text}>
-          ¿Sos un apasionado de la cocina y te encanta compartir tu entusiasmo
-          con los demás? ¿Te gustaría tener tu propio negocio y ser parte de una
-          marca reconocida a nivel internacional? ¡Entonces esta es tu
-          oportunidad!
-        </Text>
-
-        <Text style={styles.text}>
-          En Essen, buscamos personas como tú, emprendedores con visión y pasión
-          por la cocina, para formar parte de nuestro equipo de revendedores.
-          ¿Qué te ofrecemos? Una increíble gama de productos culinarios de alta
-          calidad que harán que tus clientes se enamoren de la cocina como nunca
-          antes.
-        </Text>
-
-        <Text style={styles.text}>
-          Imagina tener acceso a una exclusiva selección de utensilios de cocina
-          que combinan tecnología de vanguardia, diseño innovador y durabilidad
-          excepcional. Desde nuestras sartenes antiadherentes que hacen que
-          cocinar sea un verdadero placer, hasta nuestros cuchillos de precisión
-          que facilitan el corte y el picado, cada producto Essen está diseñado
-          para superar las expectativas.
-        </Text>
-
-        <Text style={styles.text}>
-          Pero eso no es todo. Al convertirte en revendedor Essen, vas a recibir
-          capacitación y apoyo continuo para ayudarte a alcanzar el éxito. Te
-          proporcionaremos todas las herramientas y recursos necesarios para que
-          puedas ofrecer a tus clientes una experiencia excepcional y construir
-          tu propio negocio próspero.
-        </Text>
-
-        <Text style={styles.text}>
-          No pierdas la oportunidad de formar parte de una marca líder en la
-          industria culinaria y de llevar la magia de Essen a tu comunidad.
-          ¡Contáctanos ahora y descubre cómo puedes comenzar tu camino hacia el
-          éxito como revendedor Essen!
-        </Text>
-
-        <Text style={styles.text}>
-          ¡El futuro culinario está en tus manos! Comunícate con nosotros hoy
-          mismo y sé parte de la revolución Essen.
-        </Text>
-
-        <Text style={styles.text}>Contactame, soy Martín, Tu Chico Essen</Text>
-
-        <Text style={styles.text}></Text>
-      </TouchableOpacity>
-    </ScrollView>
+    <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "transparent",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            alignSelf: "flex-end",
+            position: "absolute",
+            top: 20,
+            right: 20,
+            backgroundColor: "#666",
+            padding: 10,
+          }}
+          onPress={() => {
+            setType(
+              type === Camera.Constants.Type.back
+                ? Camera.Constants.Type.front
+                : Camera.Constants.Type.back
+            );
+          }}
+        >
+          <Text style={{ fontSize: 20, color: "white" }}>♻</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            alignSelf: "center",
+            marginBottom: 40,
+            backgroundColor: "#666",
+            padding: 10,
+          }}
+          onPress={handleTakePhoto}
+        >
+          <Text style={{ fontSize: 30, padding: 10, color: "white" }}>📸</Text>
+        </TouchableOpacity>
+      </View>
+    </Camera>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  text: {
-    fontSize: 16,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  contact: {
-    fontSize: 18,
-    marginTop: 20,
-    textAlign: "center",
-    fontStyle: "italic",
-  },
-});
-
-export default TeamScreen;
+}

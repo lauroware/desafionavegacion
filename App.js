@@ -5,9 +5,9 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
 import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
 import { Provider } from "react-redux";
 import store from "./src/store";
+import MainNavigator from "./src/navigation/Index";
 
 export default function App() {
   const [isPortrait, setIsPortrait] = useState(true);
@@ -39,9 +39,7 @@ export default function App() {
     <View style={styles.container}>
       <Header />
       <Provider store={store}>
-        <NavigationContainer>
-          <BottomTabNavigator />
-        </NavigationContainer>
+        <MainNavigator />
       </Provider>
       <Footer />
     </View>
